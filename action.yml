@@ -1,0 +1,29 @@
+name: Setup Python Action
+description: A GitHub Action that wraps actions/setup-python and adds some useful functionality.
+runs:
+  using: composite
+  steps:
+    # We cannot reference $GITHUB_ACTION_PATH in the path to other actions, but we can symlink it to a known location and then reference that location.
+    # This ensures that the path to the action stays the same even if the runner starts storing actions in different locations or the action is being run from a fork with a different name.
+    - name: Configure Subactions
+      shell: sh
+      run: ln --symbolic "$GITHUB_ACTION_PATH" "./../_setup-python-action"
+    - name: Setup Task
+      uses: arduino/setup-task@accf38bba955639d21816bb68775e5c48c482182
+    - name: Prepare Python
+      id: prepare-python
+      uses: ./../_setup-python-action/subactions/prepare/
+      with:
+        python-version-path: ${{ inputs.python-version-path }}
+    - name: Setup Python
+      uses: actions/setup-python@f38219332975fe8f9c04cca981d674bf22aea1d3
+      with:
+        python-version: ${{ steps.prepare-python.outputs.python-version }}
+    - name: Install Base Dependencies
+      shell: sh
+      run: python3 -m pip install --requirement ./base-dependencies.txt
+inputs:
+  python-version-path:
+    description: The path to the `.python-version` file.
+    required: true
+    default: ./.python-version
