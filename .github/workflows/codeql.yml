@@ -1,0 +1,22 @@
+name: CodeQL
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  codeql:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@5f532563584d71fdef14ee64d17bafb34f751ce5
+        with:
+          languages: javascript
+      - name: Analyze
+        uses: github/codeql-action/analyze@5f532563584d71fdef14ee64d17bafb34f751ce5
