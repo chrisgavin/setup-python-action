@@ -9,7 +9,7 @@ runs:
       shell: sh
       run: ln --symbolic "$GITHUB_ACTION_PATH" "./../_setup-python-action"
     - name: Setup Task
-      uses: arduino/setup-task@accf38bba955639d21816bb68775e5c48c482182
+      uses: arduino/setup-task@ca745e18916de727f841ec824ac20a615f1cddea
     - name: Prepare Python
       id: prepare-python
       uses: ./../_setup-python-action/subactions/prepare/
