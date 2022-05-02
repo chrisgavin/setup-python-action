@@ -7,7 +7,7 @@ runs:
     # This ensures that the path to the action stays the same even if the runner starts storing actions in different locations or the action is being run from a fork with a different name.
     - name: Configure Subactions
       shell: sh
-      run: ln --symbolic "$GITHUB_ACTION_PATH" "./../_setup-python-action"
+      run: ln -s "$GITHUB_ACTION_PATH" "./../_setup-python-action"
     - name: Setup Task
       uses: arduino/setup-task@ca745e18916de727f841ec824ac20a615f1cddea
     - name: Prepare Python
