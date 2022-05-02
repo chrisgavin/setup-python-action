@@ -10,6 +10,8 @@ runs:
       run: ln -s "$GITHUB_ACTION_PATH" "./../_setup-python-action"
     - name: Setup Task
       uses: arduino/setup-task@ca745e18916de727f841ec824ac20a615f1cddea
+      with:
+        repo-token: ${{ inputs.token }}
     - name: Prepare Python
       id: prepare-python
       uses: ./../_setup-python-action/subactions/prepare/
@@ -27,3 +29,7 @@ inputs:
     description: The path to the `.python-version` file.
     required: true
     default: ./.python-version
+  token:
+    description: A token for GitHub API access. It does not need any permissions, it's just used to avoid rate limiting.
+    required: true
+    default: ${{ github.token }}
