@@ -10,7 +10,7 @@
 	},
 	"license": "MIT",
 	"dependencies": {
-		"@actions/cache": "^2.0.2",
+		"@actions/cache": "^2.0.5",
 		"@actions/core": "^1.7.0",
 		"@actions/exec": "^1.1.1",
 		"reflect-metadata": "^0.1.13",
