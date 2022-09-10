@@ -4,7 +4,7 @@ import * as fs from "fs";
 import * as os from "os";
 import * as core from "@actions/core";
 
-const packageLockPath = "./package-lock.json";
+const packageLockPath = "./poetry.lock";
 const cachePaths = [
 	"~/.cache/pip/",
 	"~/.cache/pypoetry/",
