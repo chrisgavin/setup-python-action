@@ -5,10 +5,48 @@ import * as os from "os";
 import * as core from "@actions/core";
 
 const packageLockPath = "./poetry.lock";
-const cachePaths = [
-	"~/.cache/pip/",
-	"~/.cache/pypoetry/",
-];
+
+async function cachePaths(existingOnly:boolean):Promise<string[]> {
+	let paths:string[] = [];
+	switch (process.platform) {
+		case "linux": {
+			paths = [
+				"~/.cache/pip/",
+				"~/.cache/pypoetry/",
+			];
+			break;
+		}
+		case "darwin": {
+			paths = [
+				"~/Library/Caches/pip/",
+				"~/Library/Caches/pypoetry/",
+			];
+			break;
+		}
+		case "win32": {
+			paths = [
+				"~/AppData/Local/pip/Cache/",
+				"~/AppData/Local/pypoetry/Cache/",
+			];
+			break;
+		}
+		default: {
+			core.info(`No cache paths known for platform ${process.platform}.`);
+		}
+	}
+
+	if (!existingOnly) {
+		return paths;
+	}
+
+	return paths.filter(async (path) => {
+		const exists = await fs.promises.access(path).then(() => true).catch(() => false);
+		if (!exists) {
+			core.warning(`Path ${path} does not exist so it will not be cached.`);
+		}
+		return exists;
+	});
+}
 
 async function cacheKey(pythonVersion:string) {
 	const hash = crypto.createHash("sha256");	
@@ -17,16 +55,24 @@ async function cacheKey(pythonVersion:string) {
 }
 
 export async function restoreCache(pythonVersion:string):Promise<void> {
+	const paths = await cachePaths(false);
+	if (paths.length === 0) {
+		return;
+	}
 	const key = await cacheKey(pythonVersion);
 	core.info(`Restoring cache with key ${key}.`);
-	await cache.restoreCache(cachePaths, key);
+	await cache.restoreCache(paths, key);
 }
 
 export async function saveCache(pythonVersion:string):Promise<void> {
+	const paths = await cachePaths(true);
+	if (paths.length === 0) {
+		return;
+	}
 	const key = await cacheKey(pythonVersion);
 	core.info(`Saving cache with key ${key}.`);
 	try {
-		await cache.saveCache(cachePaths, key);
+		await cache.saveCache(paths, key);
 	}
 	catch (e) {
 		if (e instanceof cache.ReserveCacheError) {
