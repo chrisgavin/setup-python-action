@@ -1,7 +1,7 @@
 name: Setup Python Action - Prepare
 description: A preparation step that gathers information and sets up dependencies.
 runs:
-  using: node12
+  using: node16
   main: ./../../bootstrap-shim.js
   post: ./../../build/post.js
 inputs:
