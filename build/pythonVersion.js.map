@@ -1,0 +1,1 @@
+{"version":3,"file":"pythonVersion.js","sourceRoot":"","sources":["../src/pythonVersion.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;AAAA,uCAAyB;AACzB,iDAAmC;AAE5B,KAAK,UAAU,gBAAgB;IACrC,MAAM,QAAQ,GAAG,MAAM,EAAE,CAAC,QAAQ,CAAC,QAAQ,CAAC,MAAM,CAAC,GAAG,EAAE,CAAC,qBAAqB,CAAC,EAAE,MAAM,CAAC,CAAC;IACzF,OAAO,QAAQ,CAAC,IAAI,EAAE,CAAC;AACxB,CAAC;AAHD,4CAGC"}
