@@ -10,23 +10,26 @@ async function cachePaths(existingOnly:boolean):Promise<string[]> {
 	let paths:string[] = [];
 	switch (process.platform) {
 		case "linux": {
+			const cacheDirectory = process.env.XDG_CACHE_HOME || `${os.homedir()}/.cache/`;
 			paths = [
-				"~/.cache/pip/",
-				"~/.cache/pypoetry/",
+				`${cacheDirectory}/pip/`,
+				`${cacheDirectory}/pypoetry/`,
 			];
 			break;
 		}
 		case "darwin": {
+			const cacheDirectory = `${os.homedir()}/Library/Caches/`;
 			paths = [
-				"~/Library/Caches/pip/",
-				"~/Library/Caches/pypoetry/",
+				`${cacheDirectory}/pip/`,
+				`${cacheDirectory}/pypoetry/`,
 			];
 			break;
 		}
 		case "win32": {
+			const appDataLocalDirectory = process.env.LOCALAPPDATA || `${os.homedir()}/AppData/Local/`;
 			paths = [
-				"~/AppData/Local/pip/Cache/",
-				"~/AppData/Local/pypoetry/Cache/",
+				`${appDataLocalDirectory}/pip/Cache/`,
+				`${appDataLocalDirectory}/pypoetry/Cache/`,
 			];
 			break;
 		}
