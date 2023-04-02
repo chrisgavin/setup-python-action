@@ -9,7 +9,7 @@ runs:
       shell: sh
       run: ln -s "$GITHUB_ACTION_PATH" "./../_setup-python-action"
     - name: Setup Task
-      uses: arduino/setup-task@d665c6beebae46ff3f699d7b2fd3f1959de7153c
+      uses: arduino/setup-task@e26d8975574116b0097a1161e0fe16ba75d84c1c
       with:
         repo-token: ${{ inputs.token }}
     - name: Prepare Python
