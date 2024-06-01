@@ -1,3 +1,5 @@
+import * as sinon from "sinon";
+
 import * as inputs from "../src/inputs";
 import * as pythonVersion from "./../src/pythonVersion";
 
@@ -7,7 +9,7 @@ class TestInputs implements inputs.Inputs {
 
 describe("test getPythonVersion(...)", () => {
 	it("should return the correct Python version", async () => {
-		spyOn(inputs, "get").and.returnValue(new TestInputs());
+		sinon.stub(inputs, "get").returns(new TestInputs());
 		await pythonVersion.getPythonVersion();
 		expect(await pythonVersion.getPythonVersion()).toEqual("3.6.9");
 	});
