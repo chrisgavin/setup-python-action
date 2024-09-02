@@ -1,7 +1,7 @@
-import * as cache from "./cache";
+import * as cache from "./cache.js";
 import * as core from "@actions/core";
-import * as outputs from "./outputs";
-import * as pythonVersion from "./pythonVersion";
+import * as outputs from "./outputs.js";
+import * as pythonVersion from "./pythonVersion.js";
 import sourceMapSupport from "source-map-support";
 
 async function main() {

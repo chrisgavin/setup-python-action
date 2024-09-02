@@ -1,6 +1,6 @@
-import * as cache from "./cache";
+import * as cache from "./cache.js";
 import * as core from "@actions/core";
-import * as pythonVersion from "./pythonVersion";
+import * as pythonVersion from "./pythonVersion.js";
 import sourceMapSupport from "source-map-support";
 
 async function main() {
