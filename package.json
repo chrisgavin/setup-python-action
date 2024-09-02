@@ -1,6 +1,7 @@
 {
 	"name": "python-prepare-action",
 	"version": "0.0.0",
+	"type": "module",
 	"description": "A GitHub Action for setting up useful stuff in Python workflows.",
 	"scripts": {
 		"build": "tsc",
@@ -21,12 +22,12 @@
 		"@types/jest": "^29.5.12",
 		"@types/sinon": "^17.0.3",
 		"@types/source-map-support": "^0.5.10",
-		"@typescript-eslint/eslint-plugin": "^8.3.0",
 		"eslint": "^9.9.1",
 		"github-actions-problem-matcher-typings": "^1.1.0",
 		"jest": "^29.7.0",
 		"sinon": "^18.0.0",
 		"ts-jest": "^29.2.5",
-		"typescript": "^5.5.4"
+		"typescript": "^5.5.4",
+		"typescript-eslint": "^8.3.0"
 	}
 }
