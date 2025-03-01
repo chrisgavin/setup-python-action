@@ -20,7 +20,7 @@
 	"devDependencies": {
 		"@tsconfig/node20": "^20.1.4",
 		"@types/jest": "^29.5.14",
-		"@types/sinon": "^17.0.3",
+		"@types/sinon": "^17.0.4",
 		"@types/source-map-support": "^0.5.10",
 		"eslint": "^9.21.0",
 		"github-actions-problem-matcher-typings": "^1.1.0",
