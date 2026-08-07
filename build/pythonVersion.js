@@ -1,0 +1,7 @@
+import * as fs from "fs";
+import * as inputs from "./inputs.js";
+export async function getPythonVersion() {
+    const contents = await fs.promises.readFile(inputs.get()["python-version-path"], "utf8");
+    return contents.trim();
+}
+//# sourceMappingURL=pythonVersion.js.map
