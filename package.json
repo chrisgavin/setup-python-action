@@ -19,7 +19,7 @@
 	},
 	"devDependencies": {
 		"@tsconfig/node24": "^24.0.4",
-		"@types/node": "^24.0.0",
+		"@types/node": "^26.0.0",
 		"@types/source-map-support": "^0.5.10",
 		"github-actions-problem-matcher-typings": "^1.1.0",
 		"oxlint": "^1.73.0",
